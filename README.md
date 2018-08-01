@@ -7,7 +7,8 @@ In Your Console, Issue The Following Command:
   
 <JSON_File> Is The Path To The JSON Config File. This Can Be Absolute, Or Relative.
 
-# Exapmle JSON File
+# Exapmle JSON File 
+(This Is The JSON File Used To Create A Build Of Galaxy Wide Domination)
 ```
 {
 	"zipName": "tmp",
@@ -71,3 +72,10 @@ In Your Console, Issue The Following Command:
 | 1 | Widnows |
 | 2 | Ubuntu *(Not Released Yet)* |
 | 3 | Mac OSx *(Not Released Yet)* |
+
+# Dependency Fields
+| Field        | Description           |
+| ------------- |:-------------:|
+| createDirectories | This Is The List Of Directories To Copy Over To Create In The Final Build, Relative To The Build Path |
+| copyDirectory | This Binds The Absolute Paths Of Directories, To The Relative Path In The Build To Copy To |
+| copyFile | This Binds The Absolute Paths Of Files, To The Relative Path In The Build To Copy To |
