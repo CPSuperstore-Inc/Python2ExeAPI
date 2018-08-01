@@ -56,3 +56,18 @@ In Your Console, Issue The Following Command:
 | projectPath | This Is The Path To The Directory Which Contains The Main Project File. Any Relative Path Is Assumed To Be Relative To This Folder |
 | mainScriptName | This Is The Name Of The Main Python File **PLEASE NOTE** This MUST Be A .py File, And Not .pyc, .pyw, Or Any Other Type. **PLEASE NOTE** DO NOT END THE NAME WITH .py. It Is Implied |
 | dst | This Is The Folder Where The Build Will Be Placed On Conversion Completion. The Conversion Will Be Returned As A .zip File Named `finalName` |
+| platform | This Is A List Of Platforms To Create The Package For. See Below For The List Of Opersting Systems, And The ID To Use |
+| oneFile | Set To `"on"` If The Project Should Be Compiled Down Into A Single Executable, Or `"off"` If It Should Be Compiled Into A Series Of Files |
+| programIcon | The Path To THe Program's Icon **PLEASE NOTE** This MUST Be A .ico File. To Convert Image Files To .ico, I Like To Use [X-Icon Editor](http://www.xiconeditor.com/) |
+| showConsole | Set To `"on"` If The Project Should Open The Terminbal Window When Run, Or `"off"` If It Should hide the console window (Additional Windows Created By Libraries Like Pygame, CV2, Or TkInter Will Still Show) |
+| dumpFile | Set To `"on"` If The Project Should Create A Dump File On A Crash, Or `"off"` If It Should Not Create A Dump File |
+| dumpFileEmail | This Is The Email That The Dump File Will Be Sent To On Program Crash. If `dumpFile` Is Set To `off`, Leave This Field As An Empty String |
+| deleteOldBuild | Set To `1` If The Project Should Delete The Old Build When It Has Finished Converting If It Exists, Or `0` If It Should Not Overwrite The Build |
+| dependencies | This Contains More JSON. See The *Dependency Fields* Table Below, For More Information |
+
+# Platform/Operating System ID Lookup
+| ID        | OS           |
+| ------------- |:-------------:|
+| 1 | Widnows |
+| 2 | Ubuntu *(Not Released Yet)* |
+| 3 | Mac OSx *(Not Released Yet)* |
