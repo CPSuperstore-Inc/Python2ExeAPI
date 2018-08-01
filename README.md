@@ -5,7 +5,7 @@ The API For The Online Python To Exe Service
 In Your Console, Issue The Following Command:
 > python Python2ExeAPI.py <JSON_File>
   
-<JSON_File> Is The Path To The JSON Config File. This Can Be Absolute, Or Relative.
+`<JSON_File>` Is The Path To The JSON Config File. This Can Be Absolute, Or Relative.
 
 # Exapmle JSON File 
 (This Is The JSON File Used To Create A Build Of Galaxy Wide Domination)
@@ -41,7 +41,6 @@ In Your Console, Issue The Following Command:
 		{
 			"D:/Programming/Python/GWD/DOCUMENTATION/GWD Mod Language/GWD Mod Language.pdf": "/mods",
 			"D:/Programming/Python/GWD/SampleMod.gwd": "/mods",
-			"C:/Users/Christopher/Documents/Visual Studio 2010/Projects/ModManager/ModManager/bin/Debug/ModManager.exe": "/",
 			"D:/Programming/Python/GWD/modExtractor.exe": "/"
 		}
 	}
