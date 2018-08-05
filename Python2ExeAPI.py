@@ -1,7 +1,4 @@
-import os
 import zipfile
-import python2exeAPI
-import shutil
 import re
 import sys
 import requests
@@ -14,6 +11,7 @@ import urllib
 CODE = 2935
 
 
+# region Convert Project
 def upload(email, project_dir, main_script_name, destination, filename, platform=None, one_file=False, program_icon=None, show_console=False,
            dump_file=False, dump_file_email=None, is_zipped=False, test=False):
 
@@ -86,6 +84,11 @@ def upload(email, project_dir, main_script_name, destination, filename, platform
         url = "http://cpsuperstore.pythonanywhere.com/py2exe/comp_set_status/{}/{}/{}".format(CODE, code, 7)
         urllib2.urlopen(url)
     else:
+        urllib.urlretrieve(
+            "http://filetransfer.pythonanywhere.com/static/files/App_Defaults/Py2ExeLocal/DebugModeConversion.zip",
+            filename
+        )
+
         print "Running Test Mode. Conversion Skipped."
         filename = zip_name + '.zip'
         # filename = "[CONVERTED]" + filename
@@ -96,14 +99,26 @@ def upload(email, project_dir, main_script_name, destination, filename, platform
         pass
     except OSError:
         os.remove(zip_name + '.zip')
+# endregion
 
 try:
     properties = eval(''.join(open(sys.argv[1]).readlines()))
 except IndexError:
+    properties = {}
     print "Usage:"
     print "CreateBuild <JSON File>"
     quit()
-    
+
+path_tags = ["projectPath", "dst", "programIcon"]
+for tag in path_tags:
+    if properties[tag].startswith("./"):
+        properties[tag] = properties[tag].replace("./", os.getcwd() + "/")
+
+for section in ["copyDirectory", "copyFile"]:
+    for tag in properties["dependencies"][section]:
+        if properties["dependencies"][section][tag].startswith("./"):
+            properties["dependencies"][section][tag].replace("./", os.getcwd() + "/")
+
 ZIP_NAME = properties["zipName"]
 FINAL_NAME = properties["finalName"]
 
@@ -133,20 +148,27 @@ for each_file in include_files:
 
 zf.close()
 
-upload(
-    email="christopher.rocks@bell.net",
-    project_dir=os.getcwd() + "/" + ZIP_NAME,
-    main_script_name=properties["mainScriptName"],
-    destination=os.getcwd(),
-    filename=FINAL_NAME,
-    platform=properties["platform"],
-    one_file=properties["oneFile"],
-    program_icon=properties["programIcon"],
-    show_console=properties["showConsole"],
-    dump_file=properties["dumpFile"],
-    dump_file_email=properties["dumpFileEmail"],
-    is_zipped=True,
-)
+try:
+    debug = properties["debugMode"]
+except KeyError:
+    debug = 0
+
+if debug == 1:
+    upload(
+        email="christopher.rocks@bell.net",
+        project_dir=os.getcwd() + "/" + ZIP_NAME,
+        main_script_name=properties["mainScriptName"],
+        destination=os.getcwd(),
+        filename=FINAL_NAME,
+        platform=properties["platform"],
+        one_file=properties["oneFile"],
+        program_icon=properties["programIcon"],
+        show_console=properties["showConsole"],
+        dump_file=properties["dumpFile"],
+        dump_file_email=properties["dumpFileEmail"],
+        is_zipped=True,
+        test=debug == 1
+    )
 
 print "Conversion Ended"
 
@@ -160,6 +182,7 @@ if properties["deleteOldBuild"] == 1:
 print "Saving New Build"
 os.makedirs(SAVE_PATH)
 
+print FINAL_NAME
 shutil.move(os.getcwd() + '/' + FINAL_NAME + ".zip", SAVE_PATH)
 with zipfile.ZipFile(SAVE_PATH + "/" + FINAL_NAME + ".zip","r") as zip_ref:
     zip_ref.extractall(SAVE_PATH + "/" + FINAL_NAME)

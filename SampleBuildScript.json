@@ -1,35 +1,29 @@
 {
 	"zipName": "tmp",
-	"finalName": "Galaxy Wide Domination",
+	"finalName": "Hallway Dash",
 	"includeDirs": ["code"],
-	"includeFiles": ["Galaxy Wide Domination.py"],
-	"projectPath":  "D:/Programming/Python/GWD",
-	"mainScriptName": "Galaxy Wide Domination",
-	"dst": "D:/Programming/Python/GWD/build",
+	"includeFiles": ["Hallway_Dash.py"],
+	"projectPath":  "./sampleProject",
+	"mainScriptName": "Hallway_Dash",
+	"dst": "./build",
 	"platform": [1],
 	"oneFile": "on",
-	"programIcon": "D:/Programming/Python/GWD/rescources/images/window/icon.ico",
+	"programIcon": "./sampleProject/favicon.ico",
 	"showConsole": "off",
 	"dumpFile": "on",
 	"dumpFileEmail": "cpsuperstoreinc@gmail.com",
 	"deleteOldBuild": 1,
+	"debugMode": 1,
 	"dependencies":	
 	{
-		"createDirectories": 
-		[
-			"mods/unused", 
-			"texturepacks"
-		],
+		"createDirectories": [],
 		"copyDirectory": 
 		{
-			"D:/Programming/Python/GWD/rescources": "rescources",
-			"D:/Programming/Python/GWD/game_modifiers": "game_modifiers"
+			"./sampleProject/images": "images"
 		},
 		"copyFile":
 		{
-			"D:/Programming/Python/GWD/DOCUMENTATION/GWD Mod Language/GWD Mod Language.pdf": "/mods",
-			"D:/Programming/Python/GWD/SampleMod.gwd": "/mods",
-			"D:/Programming/Python/GWD/modExtractor.exe": "/"
+			"./sampleProject/favicon.ico": "/"
 		}
 	}
 }
