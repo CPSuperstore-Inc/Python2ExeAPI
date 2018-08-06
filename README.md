@@ -7,6 +7,12 @@ In Your Console, Issue The Following Command:
   
 `<JSON_File>` Is The Path To The JSON Config File. This Can Be Absolute, Or Relative.
 
+To run the sample JSON file, simply open a terminal window where the JSON file, and `Python2ExeAPI.py` file are.
+From There Issue The Following Command:
+> python Python2ExeAPI.py SampleBuildScript.json
+
+This will start the conversion.
+
 # Exapmle JSON File 
 (This Is The Sample JSON File To Run To Convert The Sample Project - All Provided)
 ```

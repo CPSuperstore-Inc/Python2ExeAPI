@@ -11,6 +11,83 @@ import urllib
 CODE = 2935
 
 
+def validate_json(json):
+    mandatory_fields = {
+        "zipName": str,
+        "finalName": str,
+        "includeDirs": list,
+        "includeFiles": list,
+        "projectPath": str,
+        "mainScriptName": str,
+        "dst": str,
+        "platform": {"type": list, "values": [1, 2, 3]},
+        "oneFile": {"type": str, "values": ["on", "off"]},
+        "programIcon": str,
+        "showConsole": {"type": str, "values": ["on", "off"]},
+        "dumpFile": {"type": str, "values": ["on", "off"]},
+        "dumpFileEmail": str,
+        "deleteOldBuild": {"type": int, "values": [1, 0]},
+        "dependencies": {"type": dict, "values": ["createDirectories", "copyDirectory", "copyFile"]}
+    }
+
+    has_error = False
+    for field in mandatory_fields:
+        values = None
+        data_type = mandatory_fields[field]
+        if type(mandatory_fields[field]) is dict:
+            values = mandatory_fields[field]["values"]
+            data_type = mandatory_fields[field]["type"]
+
+        # is field in json
+        if field not in json:
+            if values is None:
+                vals = "Anything"
+            else:
+                vals = ", ".join(values)
+            print "Missing JSON Field '{}' (Type={}, Values='{}')".format(field, data_type, vals)
+            has_error = True
+            continue
+
+        # contains correct datatype
+        if type(json[field]) is not data_type:
+            print "Field '{}' Should Be Type {}, But Is Type {}".format(field, data_type, type(json[field]))
+            has_error = True
+            continue
+
+        # contains correct value
+        if values is not None:
+            if data_type is list or data_type is dict:
+                for item in json[field]:
+                    if item not in values:
+                        if values is None:
+                            vals = "Anything"
+                        else:
+                            vals = values
+
+                            vals = ", Or ".join(vals)
+
+                        contains = json[field]
+
+                        if type(json[field]) is dict:
+                            contains = json[field].keys()
+                        print "Field '{}' Should Contain {}, But Is {}".format(field, vals, contains)
+                        has_error = True
+                        continue
+            else:
+                if json[field] not in values:
+                    if values is None:
+                        vals = "Anything"
+                    else:
+                        vals = values
+
+                    print "Field '{}' Should Be In {}, But Is {}".format(field, vals, json[field])
+                    has_error = True
+                    continue
+
+    if has_error is True:
+        quit()
+
+
 # region Convert Project
 def upload(email, project_dir, main_script_name, destination, filename, platform=None, one_file=False, program_icon=None, show_console=False,
            dump_file=False, dump_file_email=None, is_zipped=False, test=False):
@@ -108,6 +185,8 @@ except IndexError:
     print "Usage:"
     print "CreateBuild <JSON File>"
     quit()
+
+validate_json(properties)
 
 path_tags = ["projectPath", "dst", "programIcon"]
 for tag in path_tags:
