@@ -1,4 +1,5 @@
 {
+	"notificationEmail": "christopher.rocks@bell.net",
 	"zipName": "tmp",
 	"finalName": "Hallway Dash",
 	"includeDirs": ["code"],

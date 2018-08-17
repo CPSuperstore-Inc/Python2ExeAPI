@@ -50,14 +50,15 @@ This will start the conversion.
 # The Fields In The JSON File
 | Field        | Description           |
 | ------------- |:-------------:|
-| zipName      | The Name Of The .Zip Folder Which Will Be Created Automaticaly. This Folder Will Contain All Of The Python Files, Which Are Sent To The Conversion Servers To Be Converted To Executable|
+| notificationEmail | The Email Address To Send The Conversion Notification To, And The QoS Survey Every 10 Conversions |
+| zipName      | The Name Of The .Zip Folder Which Will Be Created Automatically. This Folder Will Contain All Of The Python Files, Which Are Sent To The Conversion Servers To Be Converted To Executable|
 | finalName | The Name Of The .Zip Folder That Will Be Returned When The Conversion Has Been Completed |
-| includeDirs | This Is A List Of Strings. The Strings Are The Differnet Folders To Include In The Conversion **PLEASE NOTE** Only Code Files Are Needed. Other Assets (ex. Images, Sounts, Etc.) Are Not Needed. If You Are Unsure, Include The Folder Anyways. It Will Be Better To Have Un-Needed Files, Than To Miss A Code File, And The Program Does Not Work |
-| includeFiles | This Is The List Of Addidtional Files Which Need To Be Included **PLEASE NOTE** Only Code Files Are Needed. Other Assets (ex. Images, Sounds, Etc.) Are Not Needed. If You Are Unsure, Include The Folder Anyways. It Will Be Better To Have Un-Needed Files, Than To Miss A Code File, And The Program Does Not Work |
+| includeDirs | This Is A List Of Strings. The Strings Are The Different Folders To Include In The Conversion **PLEASE NOTE** Only Code Files Are Needed. Other Assets (ex. Images, Sounts, Etc.) Are Not Needed. If You Are Unsure, Include The Folder Anyways. It Will Be Better To Have Un-Needed Files, Than To Miss A Code File, And The Program Does Not Work |
+| includeFiles | This Is The List Of Additional Files Which Need To Be Included **PLEASE NOTE** Only Code Files Are Needed. Other Assets (ex. Images, Sounds, Etc.) Are Not Needed. If You Are Unsure, Include The Folder Anyways. It Will Be Better To Have Un-Needed Files, Than To Miss A Code File, And The Program Does Not Work |
 | projectPath | This Is The Path To The Directory Which Contains The Main Project File. Any Relative Path Is Assumed To Be Relative To This Folder |
 | mainScriptName | This Is The Name Of The Main Python File **PLEASE NOTE** This MUST Be A .py File, And Not .pyc, .pyw, Or Any Other Type. **PLEASE NOTE** DO NOT END THE NAME WITH .py. It Is Implied |
 | dst | This Is The Folder Where The Build Will Be Placed On Conversion Completion. The Conversion Will Be Returned As A .zip File Named `finalName` |
-| platform | This Is A List Of Platforms To Create The Package For. See Below For The List Of Opersting Systems, And The ID To Use |
+| platform | This Is A List Of Platforms To Create The Package For. See Below For The List Of Operating Systems, And The ID To Use |
 | oneFile | Set To `"on"` If The Project Should Be Compiled Down Into A Single Executable, Or `"off"` If It Should Be Compiled Into A Series Of Files |
 | programIcon | The Path To THe Program's Icon **PLEASE NOTE** This MUST Be A .ico File. To Convert Image Files To .ico, I Like To Use [X-Icon Editor](http://www.xiconeditor.com/) |
 | showConsole | Set To `"on"` If The Project Should Open The Terminbal Window When Run, Or `"off"` If It Should hide the console window (Additional Windows Created By Libraries Like Pygame, CV2, Or TkInter Will Still Show) |

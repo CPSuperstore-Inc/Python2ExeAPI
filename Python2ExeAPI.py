@@ -234,7 +234,7 @@ except KeyError:
 
 if debug == 1:
     upload(
-        email="christopher.rocks@bell.net",
+        email=properties["notificationEmail"],
         project_dir=os.getcwd() + "/" + ZIP_NAME,
         main_script_name=properties["mainScriptName"],
         destination=os.getcwd(),
