@@ -232,22 +232,21 @@ try:
 except KeyError:
     debug = 0
 
-if debug == 1:
-    upload(
-        email=properties["notificationEmail"],
-        project_dir=os.getcwd() + "/" + ZIP_NAME,
-        main_script_name=properties["mainScriptName"],
-        destination=os.getcwd(),
-        filename=FINAL_NAME,
-        platform=properties["platform"],
-        one_file=properties["oneFile"],
-        program_icon=properties["programIcon"],
-        show_console=properties["showConsole"],
-        dump_file=properties["dumpFile"],
-        dump_file_email=properties["dumpFileEmail"],
-        is_zipped=True,
-        test=debug == 1
-    )
+upload(
+    email=properties["notificationEmail"],
+    project_dir=os.getcwd() + "/" + ZIP_NAME,
+    main_script_name=properties["mainScriptName"],
+    destination=os.getcwd(),
+    filename=FINAL_NAME,
+    platform=properties["platform"],
+    one_file=properties["oneFile"],
+    program_icon=properties["programIcon"],
+    show_console=properties["showConsole"],
+    dump_file=properties["dumpFile"],
+    dump_file_email=properties["dumpFileEmail"],
+    is_zipped=True,
+    test=debug == 1
+)
 
 print "Conversion Ended"
 

@@ -1,11 +1,11 @@
 {
 	"notificationEmail": "christopher.rocks@bell.net",
 	"zipName": "tmp",
-	"finalName": "Hallway Dash",
-	"includeDirs": ["code"],
-	"includeFiles": ["Hallway_Dash.py"],
+	"finalName": "PyGameExample",
+	"includeDirs": [],
+	"includeFiles": ["PyGameExample.py"],
 	"projectPath":  "./sampleProject",
-	"mainScriptName": "Hallway_Dash",
+	"mainScriptName": "PyGameExample",
 	"dst": "./build",
 	"platform": [1],
 	"oneFile": "on",
@@ -14,14 +14,12 @@
 	"dumpFile": "on",
 	"dumpFileEmail": "cpsuperstoreinc@gmail.com",
 	"deleteOldBuild": 1,
-	"debugMode": 1,
+	"debugMode": 0,
 	"dependencies":	
 	{
 		"createDirectories": [],
 		"copyDirectory": 
-		{
-			"./sampleProject/images": "images"
-		},
+		{},
 		"copyFile":
 		{
 			"./sampleProject/favicon.ico": "/"
