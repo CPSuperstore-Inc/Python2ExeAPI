@@ -156,7 +156,7 @@ def upload(email, project_dir, main_script_name, destination, filename, platform
 
         print "downloading from server"
 
-        urllib.urlretrieve("http://cpsuperstore.pythonanywhere.com/static/py2exe/post_convert/{}.zip".format(code), filename)
+        urllib.urlretrieve("http://cpsuperstore.pythonanywhere.com/py2exe/direct_download/{}".format(code), filename)
 
         url = "http://cpsuperstore.pythonanywhere.com/py2exe/comp_set_status/{}/{}/{}".format(CODE, code, 7)
         urllib2.urlopen(url)
